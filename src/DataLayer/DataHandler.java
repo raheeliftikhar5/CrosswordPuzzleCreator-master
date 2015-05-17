@@ -58,9 +58,11 @@ public class DataHandler {
         return charPositionHashMap;
     }
 
-    public void setFile(File file)
+    public void setAndLoadFile(File file)
     {
         this.file = file;
+        loadDictionary();
+        loadCharPosiHashMap();
     }
     
     public Boolean checkIfFileExist()
@@ -74,7 +76,8 @@ public class DataHandler {
     
     public void loadCharPosiHashMap()   {
         charPositionHashMap = new HashMap<String, ArrayList<String>>();
-        
+        if(answerClueHashMap==null)
+            loadDictionary();
         Set set = answerClueHashMap.entrySet();
         Iterator iterator = set.iterator();
         while(iterator.hasNext())
@@ -149,7 +152,7 @@ public class DataHandler {
         displayHashMap(lengthAnswerHashMap);
         
     }
-    public void displayHashMap(HashMap hashMap)
+    private void displayHashMap(HashMap hashMap)
     {
 //        Set alSet = hashMap.entrySet();
 //        Iterator alIterator = alSet.iterator();

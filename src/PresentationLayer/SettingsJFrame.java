@@ -245,7 +245,7 @@ public class SettingsJFrame extends javax.swing.JFrame {
 //        new SelectDataSourceJFrame(this).setVisible(rootPaneCheckingEnabled);
         File directory = createJFileChooser();
         Controller c = Controller.getInstance();
-        c.setDataSource(directory);
+        c.setAndLoadDataSource(directory);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public File createJFileChooser()

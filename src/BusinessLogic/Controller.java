@@ -18,18 +18,14 @@ import java.util.LinkedHashMap;
 //Singleton Class
 public class Controller {
 
-    private HashMap<String, String> answerClueHashMap = null;
-    private HashMap<Integer,ArrayList<String>> lengthAnswerHashMap = null;
-    private HashMap<String, ArrayList<String>> charPositionHashMap = null;
+//    private HashMap<String, String> answerClueHashMap = null;
+//    private HashMap<Integer,ArrayList<String>> lengthAnswerHashMap = null;
+//    private HashMap<String, ArrayList<String>> charPositionHashMap = null;
     
-    public void setDataSource(File file)
+    public void setAndLoadDataSource(File file)
     {
         DataHandler dh = DataHandler.getInstance();
-        dh.setFile(file);
-        
-        answerClueHashMap = dh.getAnswerClueHashMap(true);                      // true = file changed i.e. new file selected
-        lengthAnswerHashMap = dh.getLengthAnswersHashMap(true);
-        charPositionHashMap = dh.getCharPosiHashMap(true);
+        dh.setAndLoadFile(file);        
     }
     
     public Boolean checkIfFileExist()
