@@ -72,7 +72,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
         boxSizejSpinnerStateChanged(null);
 
-        addMainDividerListener();
     }
 
     /**
@@ -85,6 +84,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         fileChooser = new javax.swing.JFileChooser();
+        fileChooser1 = new javax.swing.JFileChooser();
         titlejLabel = new javax.swing.JLabel();
         controlsjPanel = new javax.swing.JPanel();
         gridSizejSpinner = new javax.swing.JSpinner();
@@ -95,7 +95,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         fileNameLabel = new javax.swing.JLabel();
         boxSizejLabel1 = new javax.swing.JLabel();
         printablejPanel = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
+        mainjSplitPane = new javax.swing.JSplitPane();
         puzzlejPanel = new javax.swing.JPanel();
         puzzlejScrollPane = new javax.swing.JScrollPane();
         puzzlejTable = new javax.swing.JTable();
@@ -112,7 +112,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crossword Puzzle Creator");
-        setBackground(new java.awt.Color(204, 204, 0));
         setMinimumSize(null);
         setResizable(false);
 
@@ -178,25 +177,32 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         );
         controlsjPanelLayout.setVerticalGroup(
             controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlsjPanelLayout.createSequentialGroup()
-                .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gridSizejLabel)
-                    .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxSizejLabel)
-                    .addComponent(settingsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(boxSizejLabel1))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gridSizejLabel)
+                .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boxSizejLabel)
+                .addComponent(settingsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(boxSizejLabel1))
             .addComponent(fileNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         printablejPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jSplitPane1.setBorder(null);
-        jSplitPane1.setName(""); // NOI18N
-        jSplitPane1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        mainjSplitPane.setBorder(null);
+        mainjSplitPane.setEnabled(false);
+        mainjSplitPane.setFocusable(false);
+        mainjSplitPane.setName(""); // NOI18N
+        mainjSplitPane.setOpaque(false);
+        mainjSplitPane.setRequestFocusEnabled(false);
+        mainjSplitPane.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jSplitPane1MouseDragged(evt);
+                mainjSplitPaneMouseDragged(evt);
+            }
+        });
+        mainjSplitPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainjSplitPaneMouseClicked(evt);
             }
         });
 
@@ -256,7 +262,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 .addGap(0, 401, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setLeftComponent(puzzlejPanel);
+        mainjSplitPane.setLeftComponent(puzzlejPanel);
 
         cluesjSplitPane.setBorder(null);
         cluesjSplitPane.setDividerLocation(292);
@@ -290,17 +296,17 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
             .addComponent(cluesjSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(cluesjPanel);
+        mainjSplitPane.setRightComponent(cluesjPanel);
 
         javax.swing.GroupLayout printablejPanelLayout = new javax.swing.GroupLayout(printablejPanel);
         printablejPanel.setLayout(printablejPanelLayout);
         printablejPanelLayout.setHorizontalGroup(
             printablejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(mainjSplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         printablejPanelLayout.setVerticalGroup(
             printablejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(mainjSplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         generatePuzzlejButton.setText("Generate");
@@ -392,18 +398,19 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsjButtonActionPerformed
 
     private File createJFileChooser() {
-        final JFileChooser jFileChooser1 = new JFileChooser();
-        jFileChooser1.setDialogTitle("Select Datasource");
-        jFileChooser1.setDialogType(JFileChooser.OPEN_DIALOG);
+//        final JFileChooser fileChooser = new JFileChooser();
+//        fileChooser.setDialogType(JFileChooser.OPEN_DIALOG);
 
+        fileChooser1.resetChoosableFileFilters();
+        fileChooser1.setAcceptAllFileFilterUsed(false);
+
+        fileChooser1.setDialogTitle("Select Datasource");
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Plain Text files", "txt", "text");
-        jFileChooser1.setFileFilter(filter);
-        jFileChooser1.setAcceptAllFileFilterUsed(false);
-        jFileChooser1.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser1.setFileFilter(filter);
 
-        if (jFileChooser1.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            return jFileChooser1.getSelectedFile();
-            //System.out.println(jFileChooser1.getSelectedFile().toString());
+        if (fileChooser1.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            return fileChooser1.getSelectedFile();
+            //System.out.println(fileChooser.getSelectedFile().toString());
         }
         return null;
     }
@@ -500,19 +507,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_generatePuzzlejButtonActionPerformed
 
-    private void addMainDividerListener() {
-        SplitPaneUI spui = jSplitPane1.getUI();
-        if (spui instanceof BasicSplitPaneUI) {
-            // Setting a mouse listener directly on split pane does not work, because no events are being received.
-            ((BasicSplitPaneUI) spui).getDivider().addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    jSplitPane1MouseDragged(e);
-                }
-
-            });
-        }
-    }
 
     private class CustomCellRenderer extends DefaultTableCellRenderer {
 
@@ -561,7 +555,11 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     }
 
     private void savePuzzlejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePuzzlejButtonActionPerformed
+fileChooser.resetChoosableFileFilters();
         fileChooser.setAcceptAllFileFilterUsed(false);
+
+        fileChooser.setDialogTitle("Save Puzzle");
+        
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PDF", "pdf"));
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPEG", "jpeg"));
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
@@ -769,21 +767,20 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
     
-    private void jSplitPaneMouseDragged(java.awt.event.MouseEvent evt) {                                         
-        // TODO add your handling code here:
-        System.out.println("evevnt callled");
-        boxSizejSpinnerStateChanged(null);
-    }                                        
 
-    private void jSplitPane1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSplitPane1MouseDragged
+    private void mainjSplitPaneMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainjSplitPaneMouseDragged
         // TODO add your handling code here:
-        System.out.println("evevnt callled");
-        
-    }//GEN-LAST:event_jSplitPane1MouseDragged
+        boxSizejSpinnerStateChanged(null);
+
+    }//GEN-LAST:event_mainjSplitPaneMouseDragged
 
     private void puzzlejPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puzzlejPanelMouseDragged
         // TODO add your handling code here:
     }//GEN-LAST:event_puzzlejPanelMouseDragged
+
+    private void mainjSplitPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainjSplitPaneMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mainjSplitPaneMouseClicked
 
     /**
      * @param args the command line arguments
@@ -799,6 +796,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel controlsjPanel;
     private javax.swing.JTextArea downCluesjTextArea;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JFileChooser fileChooser1;
     private javax.swing.JLabel fileNameLabel;
     private javax.swing.JPanel footjPanel;
     private javax.swing.JButton generatePuzzlejButton;
@@ -807,7 +805,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane mainjSplitPane;
     private javax.swing.JPanel printablejPanel;
     private javax.swing.JPanel puzzlejPanel;
     private javax.swing.JScrollPane puzzlejScrollPane;
