@@ -34,8 +34,8 @@ public class Controller {
         return dh.checkIfFileExist();
     }
     
-    public void generatePuzzle(Character[][] puzzleGrid, LinkedHashMap<String, String> acrossAnsClueHM, LinkedHashMap<String, String> downAnsClueHM) {
-        new PuzzleGenerator().generate(puzzleGrid, acrossAnsClueHM, downAnsClueHM);
+    public void generatePuzzle(Character[][] puzzleGrid, int puzzleDensity, LinkedHashMap<String, String> acrossAnsClueHM, LinkedHashMap<String, String> downAnsClueHM) {
+        new PuzzleGenerator().generate(puzzleGrid, puzzleDensity, acrossAnsClueHM, downAnsClueHM);
         
     }
     

@@ -31,7 +31,7 @@ public class PuzzleGenerator {
     }
 
     
-    public void generate(Character[][] puzzleGrid, LinkedHashMap<String, String> acrossAnsClueHM, LinkedHashMap<String, String> downAnsClueHM) {
+    public void generate(Character[][] puzzleGrid,int puzzleDensity, LinkedHashMap<String, String> acrossAnsClueHM, LinkedHashMap<String, String> downAnsClueHM) {
         
         acrossAnsClueHM.clear();
         downAnsClueHM.clear();
@@ -58,11 +58,11 @@ public class PuzzleGenerator {
        ArrayList<String> acrossConflicts;
        ArrayList<String> downConflicts;
        
-       while(wordFound == false || temp<100)
+       while(wordFound == false || temp < (size*puzzleDensity) )
        {
-           System.out.println("temp = "+temp);
-           System.out.println("Total Words = "+ answerClueHashMap.size());
-           System.out.println("Inserted Words = "+(acrossWordsList.size()+downWordsList.size()));
+//           System.out.println("temp = "+temp);
+//           System.out.println("Total Words = "+ answerClueHashMap.size());
+//           System.out.println("Inserted Words = "+(acrossWordsList.size()+downWordsList.size()));
            acrossConflicts = new ArrayList<String>();
            downConflicts = new ArrayList<String>();
             // selecting random starting position of word
