@@ -58,7 +58,7 @@ public class PuzzleGenerator {
        ArrayList<String> acrossConflicts;
        ArrayList<String> downConflicts;
        
-       while(wordFound == false || temp<100)
+       while(wordFound == false || temp<150*5)
        {
            System.out.println("temp = "+temp);
            System.out.println("Total Words = "+ answerClueHashMap.size());
