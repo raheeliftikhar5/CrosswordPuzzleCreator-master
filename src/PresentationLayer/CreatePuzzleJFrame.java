@@ -59,13 +59,15 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         //create table model
 
         initComponents();
+        Dimension d =new Dimension(915, 800);
+        this.setMinimumSize(d);
+        this.setSize(d);
         HelpfulStaticFunctions.locateAtCentre(this);
-        this.setMinimumSize(new Dimension(840, 580));
         
         //make jSpinners non-editable
-        ((DefaultEditor) boxSizejSpinner.getEditor()).getTextField().setEditable(false);
-        ((DefaultEditor) gridSizejSpinner.getEditor()).getTextField().setEditable(false);
-        ((DefaultEditor) densityjSpinner.getEditor()).getTextField().setEditable(false);
+//        ((DefaultEditor) boxSizejSpinner.getEditor()).getTextField().setEditable(false);
+//        ((DefaultEditor) gridSizejSpinner.getEditor()).getTextField().setEditable(false);
+//        ((DefaultEditor) densityjSpinner.getEditor()).getTextField().setEditable(false);
         
         puzzlejTable.setGridColor(Color.BLACK);
         gridSize = (int)gridSizejSpinner.getValue();
@@ -102,6 +104,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         gridSizejLabel3 = new javax.swing.JLabel();
         densityjSpinner = new javax.swing.JSpinner();
         titlejLabel = new javax.swing.JLabel();
+        settingsjButton1 = new javax.swing.JButton();
         footjPanel = new javax.swing.JPanel();
         generatePuzzlejButton = new javax.swing.JButton();
         savePuzzlejButton = new javax.swing.JButton();
@@ -129,7 +132,10 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crossword Puzzle Creator");
 
-        gridSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 20, 200, 1));
+        controlsjPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        gridSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(50, 5, 500, 1));
+        gridSizejSpinner.setToolTipText("5 - 500");
         gridSizejSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 gridSizejSpinnerStateChanged(evt);
@@ -138,11 +144,13 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
         gridSizejLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         gridSizejLabel.setText("Grid Size:");
+        gridSizejLabel.setToolTipText("");
 
         boxSizejLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         boxSizejLabel.setText("Box Size:");
 
         boxSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(10, 10, 90, 1));
+        boxSizejSpinner.setToolTipText("10 - 90");
         boxSizejSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 boxSizejSpinnerStateChanged(evt);
@@ -157,17 +165,19 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         });
 
         fileNameLabel.setText("<Not Selected>");
+        fileNameLabel.setToolTipText("See \"About\" section");
 
         boxSizejLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         boxSizejLabel1.setText("Data Source:");
+        boxSizejLabel1.setToolTipText("See \"About\" section");
 
         gridSizejLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         gridSizejLabel3.setLabelFor(densityjSpinner);
         gridSizejLabel3.setText("Puzzle Density:");
         gridSizejLabel3.setToolTipText("Higher the value, denser the puzzle");
 
-        densityjSpinner.setModel(new javax.swing.SpinnerNumberModel(2, 1, 10, 1));
-        densityjSpinner.setToolTipText("Higher the value, denser the puzzle");
+        densityjSpinner.setModel(new javax.swing.SpinnerNumberModel(10, 1, 30, 1));
+        densityjSpinner.setToolTipText("1 - 30");
 
         titlejLabel.setBackground(new java.awt.Color(204, 204, 204));
         titlejLabel.setFont(new java.awt.Font("Luminari", 0, 36)); // NOI18N
@@ -176,35 +186,43 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         titlejLabel.setText("Crossword Puzzle Creator");
         titlejLabel.setToolTipText("");
 
+        settingsjButton1.setText("About");
+        settingsjButton1.setNextFocusableComponent(savePuzzlejButton);
+        settingsjButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsjButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlsjPanelLayout = new javax.swing.GroupLayout(controlsjPanel);
         controlsjPanel.setLayout(controlsjPanelLayout);
         controlsjPanelLayout.setHorizontalGroup(
             controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlsjPanelLayout.createSequentialGroup()
-                .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlsjPanelLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(gridSizejLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(boxSizejLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(gridSizejLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(densityjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                        .addComponent(boxSizejLabel1))
-                    .addGroup(controlsjPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(titlejLabel)
-                        .addGap(38, 38, 38)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titlejLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(controlsjPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(gridSizejLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(boxSizejLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(gridSizejLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(densityjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(boxSizejLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fileNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(settingsjButton)
+                .addGap(18, 18, 18)
+                .addComponent(settingsjButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         controlsjPanelLayout.setVerticalGroup(
@@ -212,20 +230,20 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
             .addGroup(controlsjPanelLayout.createSequentialGroup()
                 .addComponent(titlejLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlsjPanelLayout.createSequentialGroup()
-                        .addComponent(fileNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(gridSizejLabel)
-                        .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boxSizejLabel)
-                        .addComponent(settingsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(boxSizejLabel1)
-                        .addComponent(gridSizejLabel3)
-                        .addComponent(densityjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(controlsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gridSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gridSizejLabel)
+                    .addComponent(boxSizejSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxSizejLabel)
+                    .addComponent(settingsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxSizejLabel1)
+                    .addComponent(gridSizejLabel3)
+                    .addComponent(densityjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settingsjButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fileNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
+
+        footjPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         generatePuzzlejButton.setText("Generate");
         generatePuzzlejButton.addActionListener(new java.awt.event.ActionListener() {
@@ -251,14 +269,14 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         gridSizejLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         gridSizejLabel1.setText("Width:");
 
-        documentHeightjSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(11.692f), Float.valueOf(11.0f), Float.valueOf(40.0f), Float.valueOf(1.0f)));
+        documentHeightjSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(11.692f), Float.valueOf(5.0f), Float.valueOf(100.0f), Float.valueOf(1.0f)));
         documentHeightjSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 documentHeightjSpinnerStateChanged(evt);
             }
         });
 
-        documentWidthjSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(8.262f), Float.valueOf(8.0f), Float.valueOf(30.0f), Float.valueOf(1.0f)));
+        documentWidthjSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(8.262f), Float.valueOf(5.0f), Float.valueOf(100.0f), Float.valueOf(1.0f)));
         documentWidthjSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 documentWidthjSpinnerStateChanged(evt);
@@ -284,39 +302,37 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(gridSizejLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(documentWidthjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(documentWidthjSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(gridSizejLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(documentHeightjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(documentHeightjSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(showAnswersjCheckBox)
                 .addGap(68, 68, 68))
         );
         footjPanelLayout.setVerticalGroup(
             footjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(footjPanelLayout.createSequentialGroup()
-                .addGroup(footjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(savePuzzlejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(footjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(generatePuzzlejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(showAnswersjCheckBox)
-                        .addComponent(gridSizejLabel2)
-                        .addComponent(documentHeightjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(documentWidthjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(gridSizejLabel1)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)))
-                .addGap(0, 8, Short.MAX_VALUE))
+            .addComponent(savePuzzlejButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(generatePuzzlejButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(showAnswersjCheckBox)
+                .addComponent(gridSizejLabel2)
+                .addComponent(documentHeightjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(documentWidthjSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gridSizejLabel1)
+                .addComponent(jLabel1)
+                .addComponent(jLabel2))
         );
 
         mainjScrollPane.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Printable Puzzle Preview", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         mainjScrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
 
+        printablejPanel.setAutoscrolls(true);
         printablejPanel.setPreferredSize(new java.awt.Dimension(595, 842));
         printablejPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -352,6 +368,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         });
         puzzlejPanel.setLayout(null);
 
+        puzzlejScrollPane.setAutoscrolls(true);
         puzzlejScrollPane.setEnabled(false);
 
         puzzlejTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -378,14 +395,17 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         mainjSplitPane.setLeftComponent(puzzlejPanel);
 
         cluesjPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Clues", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 1, 13))); // NOI18N
+        cluesjPanel.setAutoscrolls(true);
         cluesjPanel.setLayout(new javax.swing.BoxLayout(cluesjPanel, javax.swing.BoxLayout.LINE_AXIS));
 
         cluesjSplitPane.setBorder(null);
         cluesjSplitPane.setDividerLocation(300);
         cluesjSplitPane.setResizeWeight(0.5);
         cluesjSplitPane.setToolTipText("Drag to resize across and down clue areas");
+        cluesjSplitPane.setAutoscrolls(true);
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Across"));
+        jScrollPane1.setAutoscrolls(true);
 
         acrossCluesjTextArea.setEditable(false);
         acrossCluesjTextArea.setBackground(new java.awt.Color(238, 238, 238));
@@ -396,6 +416,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         cluesjSplitPane.setLeftComponent(jScrollPane1);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Downwards"));
+        jScrollPane2.setAutoscrolls(true);
 
         downCluesjTextArea.setEditable(false);
         downCluesjTextArea.setBackground(new java.awt.Color(238, 238, 238));
@@ -420,16 +441,13 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(10, Short.MAX_VALUE)
-                        .addComponent(footjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(controlsjPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(middlejPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(footjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(middlejPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(controlsjPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -439,7 +457,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 .addComponent(controlsjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(middlejPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(footjPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -584,15 +602,17 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 String cellValue = value.toString();
                 //set it so it can display unicode characters
                 if (cellValue.compareTo(".") == 0) {
-                    System.out.println(cellValue);
+//                    System.out.println(cellValue);
 
                     cell.setFont(new Font("MS Mincho", Font.PLAIN, 5));
                     cell.setBackground(Color.BLACK);
 
                 } else {
                     int fontSize=12;
-                    if(boxSize<15 && boxSize>12)
+                    if(boxSize<20 && boxSize>14)
                         fontSize=10;
+                    else if(boxSize<15)
+                        fontSize=boxSize-2;
                         
                     cell.setFont(new Font("MS Mincho", Font.PLAIN, fontSize));
                     cell.setBackground(Color.WHITE);
@@ -699,7 +719,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         Dimension d = new Dimension(newWidth, newHeight);
         puzzlejScrollPane.setSize(d);
 //        puzzlejScrollPane.validate();
-        System.out.println("In BoxSizespinnerstate changed," + puzzlejScrollPane.getSize());
+//        System.out.println("In BoxSizespinnerstate changed," + puzzlejScrollPane.getSize());
 //        if(boxSize<16)
 //        for(int col=0; col< columnCount; col++){
 //            columnModel.getColumn(col).setWidth(boxSize);
@@ -707,13 +727,17 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_boxSizejSpinnerStateChanged
 
     private void gridSizejSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_gridSizejSpinnerStateChanged
+//tweak to avoid blackk recolor of table
+        puzzlejTable.getCellRenderer(gridSize-1, gridSize-1).getTableCellRendererComponent(puzzlejTable, null, false, true, gridSize-1, gridSize-1).setBackground(Color.white);
         //gridSize is no of rows and columns 
         gridSize = (int) gridSizejSpinner.getValue();
 
         puzzlejTable.setModel(new javax.swing.table.DefaultTableModel(gridSize, gridSize));
+        puzzlejTable.setBackground(Color.WHITE);
         acrossCluesjTextArea.setText("");
         downCluesjTextArea.setText("");
         boxSizejSpinnerStateChanged(evt);
+
 
         //set new width for all columns
 //        TableColumnModel columnModel = puzzlejTable.getColumnModel();
@@ -880,8 +904,13 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
     private void printablejPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printablejPanelMouseDragged
         // TODO add your handling code here:
-        System.out.println("printablejPanelMouseDragged");
+//        System.out.println("printablejPanelMouseDragged");
     }//GEN-LAST:event_printablejPanelMouseDragged
+
+    private void settingsjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsjButton1ActionPerformed
+        // TODO add your handling code here:
+        new AboutJFrame().setVisible(true);
+    }//GEN-LAST:event_settingsjButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -922,6 +951,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
     private javax.swing.JTable puzzlejTable;
     private javax.swing.JButton savePuzzlejButton;
     private javax.swing.JButton settingsjButton;
+    private javax.swing.JButton settingsjButton1;
     private javax.swing.JCheckBox showAnswersjCheckBox;
     private javax.swing.JLabel titlejLabel;
     // End of variables declaration//GEN-END:variables

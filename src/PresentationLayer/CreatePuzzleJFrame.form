@@ -30,18 +30,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
-                      <Component id="footjPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="controlsjPanel" max="32767" attributes="0"/>
-                          <Component id="middlejPanel" max="32767" attributes="0"/>
-                      </Group>
+                  <Component id="footjPanel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="middlejPanel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="controlsjPanel" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -51,11 +46,11 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="controlsjPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="middlejPanel" min="-2" pref="605" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="footjPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -64,38 +59,43 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="controlsjPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="gridSizejSpinner" min="-2" pref="57" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="boxSizejLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="boxSizejSpinner" min="-2" pref="57" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="densityjSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="121" max="32767" attributes="0"/>
-                          <Component id="boxSizejLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="titlejLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="titlejLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="gridSizejLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="gridSizejSpinner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="boxSizejLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="boxSizejSpinner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="gridSizejLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="densityjSpinner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="boxSizejLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="fileNameLabel" min="-2" pref="99" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Component id="settingsjButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="settingsjButton1" min="-2" pref="70" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -105,21 +105,17 @@
               <Group type="102" attributes="0">
                   <Component id="titlejLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="fileNameLabel" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="gridSizejSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="boxSizejSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="boxSizejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="settingsjButton" alignment="3" max="32767" attributes="0"/>
-                          <Component id="boxSizejLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="densityjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="gridSizejSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gridSizejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="boxSizejSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="boxSizejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsjButton" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="boxSizejLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gridSizejLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="densityjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="settingsjButton1" alignment="3" max="32767" attributes="0"/>
+                      <Component id="fileNameLabel" alignment="3" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -129,8 +125,9 @@
         <Component class="javax.swing.JSpinner" name="gridSizejSpinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="20" maximum="200" minimum="20" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="50" maximum="500" minimum="5" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="5 - 500"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="gridSizejSpinnerStateChanged"/>
@@ -142,6 +139,7 @@
               <Font name="Lucida Grande" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Grid Size:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="boxSizejLabel">
@@ -157,6 +155,7 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="10" maximum="90" minimum="10" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="10 - 90"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="boxSizejSpinnerStateChanged"/>
@@ -173,6 +172,7 @@
         <Component class="javax.swing.JLabel" name="fileNameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&lt;Not Selected&gt;"/>
+            <Property name="toolTipText" type="java.lang.String" value="See &quot;About&quot; section"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="boxSizejLabel1">
@@ -181,6 +181,7 @@
               <Font name="Lucida Grande" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Data Source:"/>
+            <Property name="toolTipText" type="java.lang.String" value="See &quot;About&quot; section"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="gridSizejLabel3">
@@ -198,9 +199,9 @@
         <Component class="javax.swing.JSpinner" name="densityjSpinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="2" maximum="10" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="10" maximum="30" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Higher the value, denser the puzzle"/>
+            <Property name="toolTipText" type="java.lang.String" value="1 - 30"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="titlejLabel">
@@ -219,9 +220,27 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="settingsjButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="About"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="savePuzzlejButton"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingsjButton1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="footjPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -229,21 +248,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="savePuzzlejButton" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="generatePuzzlejButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="gridSizejLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="documentWidthjSpinner" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="documentWidthjSpinner" pref="80" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="gridSizejLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="documentHeightjSpinner" min="-2" pref="80" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="documentHeightjSpinner" pref="80" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="160" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="showAnswersjCheckBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               </Group>
@@ -251,21 +270,16 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="savePuzzlejButton" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="generatePuzzlejButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="showAnswersjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="documentHeightjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="documentWidthjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="gridSizejLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+              <Component id="savePuzzlejButton" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                  <Component id="generatePuzzlejButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="showAnswersjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gridSizejLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="documentHeightjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="documentWidthjSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gridSizejLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -306,7 +320,7 @@
         <Component class="javax.swing.JSpinner" name="documentHeightjSpinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="11.692" maximum="40.0" minimum="11.0" numberType="java.lang.Float" stepSize="1.0" type="number"/>
+              <SpinnerModel initial="11.692" maximum="100.0" minimum="5.0" numberType="java.lang.Float" stepSize="1.0" type="number"/>
             </Property>
           </Properties>
           <Events>
@@ -316,7 +330,7 @@
         <Component class="javax.swing.JSpinner" name="documentWidthjSpinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="8.262" maximum="30.0" minimum="8.0" numberType="java.lang.Float" stepSize="1.0" type="number"/>
+              <SpinnerModel initial="8.262" maximum="100.0" minimum="5.0" numberType="java.lang.Float" stepSize="1.0" type="number"/>
             </Property>
           </Properties>
           <Events>
@@ -363,6 +377,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="printablejPanel">
               <Properties>
+                <Property name="autoscrolls" type="boolean" value="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[595, 842]"/>
                 </Property>
@@ -414,6 +429,7 @@
                       <SubComponents>
                         <Container class="javax.swing.JScrollPane" name="puzzlejScrollPane">
                           <Properties>
+                            <Property name="autoscrolls" type="boolean" value="true"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                           <AuxValues>
@@ -463,6 +479,7 @@
                             </TitledBorder>
                           </Border>
                         </Property>
+                        <Property name="autoscrolls" type="boolean" value="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
@@ -480,6 +497,7 @@
                             <Property name="dividerLocation" type="int" value="300"/>
                             <Property name="resizeWeight" type="double" value="0.5"/>
                             <Property name="toolTipText" type="java.lang.String" value="Drag to resize across and down clue areas"/>
+                            <Property name="autoscrolls" type="boolean" value="true"/>
                           </Properties>
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
@@ -495,6 +513,7 @@
                                     </TitledBorder>
                                   </Border>
                                 </Property>
+                                <Property name="autoscrolls" type="boolean" value="true"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -530,6 +549,7 @@
                                     </TitledBorder>
                                   </Border>
                                 </Property>
+                                <Property name="autoscrolls" type="boolean" value="true"/>
                               </Properties>
                               <AuxValues>
                                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
