@@ -79,11 +79,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         ((DefaultEditor) densityjSpinner.getEditor()).getTextField().setEditable(false);
         
         puzzlejTable.setGridColor(Color.BLACK);
-
-        boxSizejSpinnerStateChanged(null);
-//        gridSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(4, 4, 150, 1));
-
-
         gridSize = (int)gridSizejSpinner.getValue();
         puzzlejTable.setModel(new javax.swing.table.DefaultTableModel(gridSize, gridSize));
         
@@ -94,7 +89,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         boxSizejSpinnerStateChanged(null);
         //initialize docWidth & docHeight
         updateDocSizeFromSpinners();
-
     }
 
     /**
@@ -145,10 +139,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Crossword Puzzle Creator");
-        setMaximumSize(new java.awt.Dimension(2147, 2147));
 
-
-        gridSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(4, 4, 150, 1));
         gridSizejSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 20, 200, 1));
         gridSizejSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -384,8 +375,6 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         ));
         puzzlejTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         puzzlejTable.setEnabled(false);
-        puzzlejTable.setRowSelectionAllowed(false);
-        puzzlejTable.setTableHeader(null);
         puzzlejTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         puzzlejTable.setShowGrid(true);
         puzzlejTable.setTableHeader(null);
@@ -608,16 +597,15 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 String cellValue = value.toString();
                 //set it so it can display unicode characters
                 if (cellValue.compareTo(".") == 0) {
-//                    System.out.println(cellValue);
+                    System.out.println(cellValue);
 
                     cell.setFont(new Font("MS Mincho", Font.PLAIN, 5));
                     cell.setBackground(Color.BLACK);
 
                 } else {
-                    cell.setFont(new Font("MS Mincho", Font.PLAIN, 8));
-                    int fontSize=8;
-                    if(boxSize<15)
-                        fontSize=-5;
+                    int fontSize=12;
+                    if(boxSize<15 && boxSize>12)
+                        fontSize=10;
                         
                     cell.setFont(new Font("MS Mincho", Font.PLAIN, fontSize));
                     cell.setBackground(Color.WHITE);
@@ -656,9 +644,9 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         fileChooser.setDialogTitle("Save Puzzle");
         
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PDF", "pdf"));
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPEG", "jpeg"));
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
-        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PNG", "png"));
+//        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPEG", "jpeg"));
+//        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
+//        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("PNG", "png"));
 //        fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("BMP", "bmp"));
         
         int r = fileChooser.showSaveDialog(this);
@@ -671,6 +659,7 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
             JPanel jPanelToPrint = printablejPanel;
 
             if (type.equals("PDF")) { //Save as pdf
+                    puzzlejTable.setBackground(Color.black);
                 try {
 //                  Document document = new Document(PageSize.A4.rotate(), 50, 50, 50, 50);
                     Document document = new Document(new Rectangle(docWidth, docHeight));
@@ -689,6 +678,8 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(CreatePuzzleJFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                    puzzlejTable.setBackground(Color.white);
+
             } else { //Save as image
 
                 BufferedImage bi = ScreenImage.createImage(jPanelToPrint);
@@ -712,17 +703,19 @@ public class CreatePuzzleJFrame extends javax.swing.JFrame {
         //set new width for all columns
         TableColumnModel columnModel = puzzlejTable.getColumnModel();
         int columnCount = columnModel.getColumnCount();
-
-        int newWidth = (boxSize * columnCount);
+        
+        int oldWidth = boxSize;
+        if(boxSize<15)//because column's min width is 15
+            oldWidth = 15;
+        int newWidth = (oldWidth * columnCount)+4;
         int newHeight = boxSize * puzzlejTable.getRowCount() + 4;//+4 to avoid scroll bar
         Dimension d = new Dimension(newWidth, newHeight);
         puzzlejScrollPane.setSize(d);
-        puzzlejScrollPane.setPreferredSize(d);
-        //System.out.println("In BoxSizespinnerstate changed, PuzzleJpanel width:"+puzzlejPanel.getWidth());
-        puzzlejScrollPane.validate();
+//        puzzlejScrollPane.validate();
         System.out.println("In BoxSizespinnerstate changed," + puzzlejScrollPane.getSize());
+//        if(boxSize<16)
 //        for(int col=0; col< columnCount; col++){
-//            columnModel.getColumn(col).setPreferredWidth(boxSize);
+//            columnModel.getColumn(col).setWidth(boxSize);
 //        } 
     }//GEN-LAST:event_boxSizejSpinnerStateChanged
 

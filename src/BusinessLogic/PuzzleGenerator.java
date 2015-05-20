@@ -58,11 +58,7 @@ public class PuzzleGenerator {
        ArrayList<String> acrossConflicts;
        ArrayList<String> downConflicts;
        
-<<<<<<< HEAD
-       while(wordFound == false || temp<150*5)
-=======
        while(wordFound == false || temp < (size*puzzleDensity) )
->>>>>>> origin/master
        {
 //           System.out.println("temp = "+temp);
 //           System.out.println("Total Words = "+ answerClueHashMap.size());
@@ -218,7 +214,7 @@ public class PuzzleGenerator {
                             {    
                                 for(int j=1;j<acrossConflicts.size();j++)
                                 {
-                                    System.out.print(acrossConflicts.get(j)+" , ");
+//                                    System.out.print(acrossConflicts.get(j)+" , ");
 
                                     ArrayList<String> list2 = charPositionHashMap.get(acrossConflicts.get(j));
                                     if(list2!=null && list2.contains(list.get(i)))
